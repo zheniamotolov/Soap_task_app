@@ -1,0 +1,107 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.tasks.com/task-ws"
+           targetNamespace="http://www.tasks.com/task-ws" elementFormDefault="qualified">
+
+    <xs:element name="getTaskByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="taskId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getTaskByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="taskInfo" type="tns:taskInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="taskInfo">
+        <xs:sequence>
+            <xs:element name="taskId" type="xs:long"/>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="category" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="getAllTasksRequest">
+        <xs:complexType/>
+    </xs:element>    
+    <xs:element name="getAllTasksResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="taskInfo" type="tns:taskInfo" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>   
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>     
+    <xs:element name="addTaskRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="title" type="xs:string"/>
+                <xs:element name="category" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addTaskResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>            
+                <xs:element name="taskInfo" type="tns:taskInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateTaskRequest">
+        <xs:complexType>
+            <xs:sequence>
+               <xs:element name="taskInfo" type="tns:taskInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="updateTaskResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteTaskRequest">
+        <xs:complexType>
+            <xs:sequence>
+               <xs:element name="taskId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deleteTaskResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>                   
+</xs:schema>
+<!--Get by id -->
+<!--<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:art="http://www.tasks.com/task-ws">-->
+<!--<soapenv:Header/>-->
+<!--<soapenv:Body>-->
+    <!--<art:getTaskleByIdRequest>-->
+        <!--<			art:taskId>2</art:taskId>-->
+    <!--</art:getTaskByIdRequest>-->
+<!--</soapenv:Body>-->
+<!--</soapenv:Envelope>-->
+<!--Update-->
+<!--<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:art="http://www.tasks.com/task-ws">-->
+<!--<soapenv:Header/>-->
+<!--<soapenv:Body>-->
+    <!--<art:updateTaskRequest>-->
+        <!--<art:taskInfo>-->
+            <!--<art:taskId>2</art:taskId>-->
+            <!--<art:title>Update: Spring Boot Getting Started</art:title>-->
+            <!--<art:category>Update: Spring Boot</art:category>-->
+        <!--</art:taskInfo>-->
+    <!--</art:updateTaskRequest>-->
+<!--</soapenv:Body>-->
+<!--</soapenv:Envelope>-->
